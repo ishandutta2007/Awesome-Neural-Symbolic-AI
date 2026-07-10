@@ -75,13 +75,13 @@ The Compiler-Locked Neuro-Symbolic Loop[Input Computational Task] ───> [Co
 
 Deploying and scaling hybrid neuro-symbolic workflows across large-scale distributed computing infrastructures introduces unique compute constraints and gradient walls.
 
-### The Sparse Gradient Stagnation Barrier
-*   **The Problem:** When executing reinforcement learning with verifiable rewards, coupling a neural policy directly with a hard, non-differentiable symbolic compiler results in severe gradient sparsity during early training epochs. If a base model fails 99.9% of hidden compiler tests on step zero, the backpropagation loop receives zero meaningful optimization direction, causing optimization to stall completely.
-*   **Mitigation:** Implementing a strict **Warm-Start Curriculum Schedule**, initializing the model weights over a supervised dataset of pre-verified, synthetic reasoning traces first to establish a baseline success rate before unlocking the autonomous reinforcement learning loop.
+- ### The Sparse Gradient Stagnation Barrier
+	*   **The Problem:** When executing reinforcement learning with verifiable rewards, coupling a neural policy directly with a hard, non-differentiable symbolic compiler results in severe gradient sparsity during early training epochs. If a base model fails 99.9% of hidden compiler tests on step zero, the backpropagation loop receives zero meaningful optimization direction, causing optimization to stall completely.
+	*   **Mitigation:** Implementing a strict **Warm-Start Curriculum Schedule**, initializing the model weights over a supervised dataset of pre-verified, synthetic reasoning traces first to establish a baseline success rate before unlocking the autonomous reinforcement learning loop.
 
-### The Real-Time Multi-Model VRAM Overload Wall
-*   **The Problem:** Running high-concurrency neuro-symbolic pipelines requires hosting massive neural transformer parameters alongside local Docker sandboxes, graph databases, and compiler execution kernels concurrently. This creates an intense memory capacity explosion that saturates server RAM and chokes intra-node communication buses.
-*   **Mitigation:** Compiling the neural component using **Fully Sharded Data Parallelism (FSDP)**, sharding optimizer states, gradients, and model parameters evenly across the GPU cluster array, dynamically pulling and dropping layer weights via optimized collective communication primitives on-the-fly.
+- ### The Real-Time Multi-Model VRAM Overload Wall
+	*   **The Problem:** Running high-concurrency neuro-symbolic pipelines requires hosting massive neural transformer parameters alongside local Docker sandboxes, graph databases, and compiler execution kernels concurrently. This creates an intense memory capacity explosion that saturates server RAM and chokes intra-node communication buses.
+	*   **Mitigation:** Compiling the neural component using **Fully Sharded Data Parallelism (FSDP)**, sharding optimizer states, gradients, and model parameters evenly across the GPU cluster array, dynamically pulling and dropping layer weights via optimized collective communication primitives on-the-fly.
 
 ---
 
